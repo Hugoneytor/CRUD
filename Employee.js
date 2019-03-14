@@ -1,8 +1,8 @@
 export default class Employee {
-  constructor(name, email, birthday) {
-    this._name = name.toUpperCase();
-    this._email = email;
-    this._birthday = birthday;
+  constructor(employee) {
+    this._name = employee.name.toUpperCase();
+    this._email = employee.email;
+    this._birthday = new Date(employee.birthday);
     this._months = [
       "Ene",
       "Feb",

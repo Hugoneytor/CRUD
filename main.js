@@ -9,16 +9,28 @@ class Main {
     );
 
     document.querySelector("#btnAdd").addEventListener("click", () => {
-      let name = document.querySelector("#name").value;
-      let email = document.querySelector("#email").value;
-      let sBirthday = document.querySelector("#birthday").value;
-      sBirthday = sBirthday.split("-");
+      let form = document.querySelector("#form");
 
-      let birthday = new Date(sBirthday[0], sBirthday[1] - 1, sBirthday[2]);
+      if(form.checkValidity() === true){
+        let name = document.querySelector("#name").value;
+        let email = document.querySelector("#email").value;
+        let sBirthday = document.querySelector("#birthday").value;
+        sBirthday = sBirthday.split("-");
+  
+        let birthday = new Date(sBirthday[0], sBirthday[1] - 1, sBirthday[2]);
+        
+        let objEmployee = {
+          name: name,
+          email: email,
+          birthday: birthday
+        };
 
-      let employee = new Employee(name, email, birthday);
+        let employee = new Employee(objEmployee);
+        
 
-      agenda.addEmployee(employee);
+        agenda.addEmployee(employee);
+      }
+      form.classList.add("was-validated");
     });
   }
 }
